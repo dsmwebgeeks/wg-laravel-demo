@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/meals', 'MealController@index');
+Route::post('/meals', 'MealController@store');
+Route::delete('/meals/{meal}', 'MealController@destroy');
