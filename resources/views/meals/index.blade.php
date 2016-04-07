@@ -11,7 +11,7 @@
                     <!-- Display Validation Errors -->
                     @include('common.errors')
 
-                    <form class="form-horizontal" action="{{ url('meal') }}" method="post">
+                    <form class="form-horizontal" action="{{ url('meals') }}" method="post">
                         {!! csrf_field() !!}
 
                         <!-- Meal Name -->
@@ -43,7 +43,47 @@
                     </form>
                 </div>
             </div>
+            <!-- Current Tasks -->
+            @if (count($meals) > 0)
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Current Meals
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="table table-striped task-table">
+
+                            <!-- Table Headings -->
+                            <thead>
+                                <th>Day</th>
+                                <th>Meal</th>
+                                <th>&nbsp;</th>
+                            </thead>
+
+                            <!-- Table Body -->
+                            <tbody>
+                                @foreach ($meals as $meal)
+                                    <tr>
+                                        <td class="table-text">
+                                            <div>{{ $meal->day }}</div>
+                                        </td>
+
+                                        <td class="table-text">
+                                            <div>{{ $meal->name }}</div>
+                                        </td>
+
+                                        <td>
+                                            <!-- TODO: Delete Button -->
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>
+
 @endsection

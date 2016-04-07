@@ -8,17 +8,23 @@ use App\Meal;
 
 use App\Http\Requests;
 
+use App\Repositories\MealRepository;
+
 class MealController extends Controller
 {
-    public function __construct() {
-        return $this->middleware('auth');
+    protected $meals;
+
+    public function __construct(MealRepository $meals) {
+        $this->meals = $meals;
+
+        $this->middleware('auth');
     }
 
     public function index(Request $request) {
         $meals = Meal::where('user_id', $request->user()->id)->get();
 
         return view('meals.index', [
-            'meals' => $meals,
+            'meals' => $this->meals->forUser($request->user()),
         ]);
     }
 
