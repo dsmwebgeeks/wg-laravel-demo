@@ -28,7 +28,7 @@
                             <label for="meal-day" class="col-sm-3 control-label">Day</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="day" id="meal-day" class="form-control">
+                                <input type="date" name="day" id="meal-day" class="form-control">
                             </div>
                         </div>
 

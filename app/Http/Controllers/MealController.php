@@ -41,4 +41,12 @@ class MealController extends Controller
 
         return redirect('/meals');
     }
+
+    public function destroy(Request $request, Meal $meal) {
+        $this->authorize('destroy', $meal);
+
+        $meal->delete();
+
+        return redirect('/meals');
+    }
 }
